@@ -217,3 +217,20 @@ Before deploying, make sure to:
 ## License
 
 No license has been specified for this repository yet. Add a license file if you intend to permit reuse or redistribution.
+
+## Images 
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 32 29 PM" src="https://github.com/user-attachments/assets/3bc9854a-759b-4712-9cc5-016dc748b190" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 32 40 PM" src="https://github.com/user-attachments/assets/2fd306df-6506-487e-a0d2-eb03617756a6" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 32 19 PM" src="https://github.com/user-attachments/assets/f1feb0a3-6391-4fc6-9a20-834d67e9d00e" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 31 41 PM" src="https://github.com/user-attachments/assets/ecbc39dc-f92d-459d-afc1-e16c1bfcf63d" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 31 54 PM" src="https://github.com/user-attachments/assets/041d21b7-2894-467d-a523-39380f9e1e91" />
+![Uploading Screenshot 2026-10-27 at 3.34.13 PM.png…]()
+<img width="1680" height="1050" alt="Screenshot 2026-10-27 at 3 34 37 PM" src="https://github.com/user-attachments/assets/31c96d10-ac38-4c02-802e-44184a87a6f0" />
+
+
+
+
+
+
+
+
