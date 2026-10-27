@@ -1,31 +1,36 @@
 # Local Disaster Alert & Resource Coordination Platform
 
-A full-stack disaster-response coordination platform that helps communities report emergencies, coordinate volunteers, and manage resource requests from a shared web application.
+A full-stack web platform for helping communities report local disasters, coordinate volunteers, and manage requests for emergency resources and assistance.
 
-## Overview
+## What it does
 
-The platform connects citizens, volunteers, and administrators during local disasters. It provides role-based dashboards, disaster reporting, resource-request workflows, authentication, and real-time communication support.
+The platform brings citizens, volunteers, and administrators into one coordination workflow:
+
+- Citizens can register, report incidents, and request help.
+- Volunteers can review and respond to community needs.
+- Administrators can manage users, disasters, and requests.
+- Real-time communication keeps connected clients synchronized.
+- Map support helps visualize locations and disaster-related activity.
 
 ## Features
 
-- **Role-based access control** for citizens, volunteers, and administrators
-- **Citizen dashboard** for viewing incidents and requesting assistance
-- **Volunteer dashboard** for coordinating and responding to community needs
-- **Admin dashboard** for managing users, disasters, and requests
-- **Disaster reporting and tracking**
-- **Resource and assistance request management**
-- **JWT authentication** with protected routes
-- **Real-time updates** using Socket.IO
-- **Map integration** with Leaflet and optional Google Maps configuration
-- **File uploads** served through the API
-- **REST API** backed by MongoDB
-- **Responsive React interface** built with Vite and Tailwind CSS
+- Role-based access for **Citizen**, **Volunteer**, and **Admin** users
+- Protected dashboards and JWT-based authentication
+- Disaster reporting and tracking
+- Resource and assistance request management
+- Real-time updates with Socket.IO
+- Interactive maps with Leaflet and React Leaflet
+- Optional Google Maps API integration
+- File uploads served by the backend
+- REST API with MongoDB persistence
+- Responsive React interface with Tailwind CSS
+- Health-check endpoint at `/api/health`
 
-## Tech Stack
+## Tech stack
 
 ### Frontend
 
-- React
+- React 19
 - Vite
 - React Router
 - Tailwind CSS
@@ -38,14 +43,14 @@ The platform connects citizens, volunteers, and administrators during local disa
 
 - Node.js
 - Express
-- MongoDB with Mongoose
+- MongoDB and Mongoose
 - Socket.IO
-- JSON Web Tokens
+- JSON Web Token authentication
 - bcryptjs
 - Multer
 - Morgan
 
-## Project Structure
+## Repository structure
 
 ```text
 .
@@ -58,18 +63,18 @@ The platform connects citizens, volunteers, and administrators during local disa
     ├── middlewares/
     ├── models/
     ├── routes/
-    ├── uploads/
+    ├���─ uploads/
     └── server.js
 ```
 
-## Prerequisites
+## Requirements
 
 - Node.js 18 or newer
 - npm
-- MongoDB, either locally or through a hosted provider
-- Optional Google Maps API key, if Google Maps features are enabled
+- MongoDB, local or hosted
+- Optional Google Maps API key
 
-## Getting Started
+## Local development
 
 ### 1. Clone the repository
 
@@ -78,7 +83,7 @@ git clone https://github.com/aashutosh-k-das/Local-Disaster-Alert---Resource-Coo
 cd Local-Disaster-Alert---Resource-Coordination-Platform
 ```
 
-### 2. Configure the server
+### 2. Configure and run the backend
 
 ```bash
 cd server
@@ -86,7 +91,7 @@ npm install
 cp .env.example .env
 ```
 
-Update `server/.env` with values appropriate for your environment:
+Set the values in `server/.env`:
 
 ```env
 PORT=5000
@@ -97,27 +102,27 @@ CLIENT_URL=http://localhost:5173
 GOOGLE_MAPS_API_KEY=
 ```
 
-Start the backend in development mode:
+Start the API:
 
 ```bash
 npm run dev
 ```
 
-Or start it normally:
+For a normal Node.js start, use:
 
 ```bash
 npm start
 ```
 
-The API runs at `http://localhost:5000` by default. You can verify it with:
+The backend runs at `http://localhost:5000` by default. Check that it is running with:
 
-```text
-GET http://localhost:5000/api/health
+```bash
+curl http://localhost:5000/api/health
 ```
 
-### 3. Configure the client
+### 3. Configure and run the frontend
 
-Open a second terminal:
+In a second terminal:
 
 ```bash
 cd client
@@ -125,75 +130,75 @@ npm install
 cp .env.example .env
 ```
 
-Update `client/.env` as needed:
+Set the values in `client/.env`:
 
 ```env
-VITE_API_URL=http://localhost:5001/api
-VITE_SOCKET_URL=http://localhost:5001
+VITE_API_URL=http://localhost:5000/api
+VITE_SOCKET_URL=http://localhost:5000
 VITE_GOOGLE_MAPS_API_KEY=
 ```
 
-> Make sure `VITE_API_URL` and `VITE_SOCKET_URL` match the port used by your backend. The server defaults to port `5000`; update these values if you use that default.
-
-Start the frontend:
+Start the Vite development server:
 
 ```bash
 npm run dev
 ```
 
-The Vite development server will print the local URL in the terminal, typically `http://localhost:5173`.
+The frontend is typically available at `http://localhost:5173`.
 
-## Available Scripts
+## Available scripts
 
-### Client
+### Client scripts
 
-From the `client` directory:
+Run these commands from `client/`:
 
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Start the Vite development server |
 | `npm run build` | Create a production build |
 | `npm run lint` | Run ESLint |
-| `npm run preview` | Preview the production build locally |
+| `npm run preview` | Preview the production build |
 
-### Server
+### Server scripts
 
-From the `server` directory:
+Run these commands from `server/`:
 
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Start the API with Nodemon |
 | `npm start` | Start the API with Node.js |
 
-## API Areas
+## API route groups
 
-The backend currently exposes route groups for:
+| Route | Purpose |
+| --- | --- |
+| `/api/auth` | Registration and login |
+| `/api/users` | User-related operations |
+| `/api/disasters` | Disaster creation and management |
+| `/api/requests` | Assistance and resource requests |
+| `/api/health` | Backend health check |
 
-- `/api/auth` — registration and login
-- `/api/users` — user-related operations
-- `/api/disasters` — disaster creation and management
-- `/api/requests` — assistance and resource requests
-- `/api/health` — service health check
+## Environment variables
 
-## Security Notes
+The repository provides example files at:
 
-- Do not commit `.env` files or real credentials.
-- Use a long, unique value for `JWT_SECRET` in non-development environments.
-- Use a managed MongoDB connection string with appropriate access controls in production.
-- Restrict CORS origins through `CLIENT_URL` when deploying.
-- Review uploaded-file handling and storage policies before production deployment.
+- `client/.env.example`
+- `server/.env.example`
 
-## Production Considerations
+Never commit real secrets. Keep `.env` files local and use a strong, unique `JWT_SECRET` outside development.
 
-Before deploying, consider:
+## Production checklist
 
-- Building the client with `npm run build`
-- Hosting the frontend and backend behind HTTPS
-- Configuring production MongoDB credentials
-- Setting `NODE_ENV=production`
-- Providing a production `CLIENT_URL`
-- Moving uploads to durable object storage
-- Adding monitoring, backups, rate limiting, and automated tests
+Before deploying, make sure to:
+
+- Use HTTPS for the frontend, API, and Socket.IO connection.
+- Configure a production MongoDB connection string.
+- Set `NODE_ENV=production`.
+- Set an explicit production `CLIENT_URL`.
+- Restrict CORS to trusted origins.
+- Store uploads in durable object storage when appropriate.
+- Add monitoring, backups, rate limiting, and automated tests.
+- Run the client production build with `npm run build`.
 
 ## Contributing
 
@@ -204,9 +209,10 @@ Before deploying, consider:
    git checkout -b feature/your-feature
    ```
 
-3. Make and test your changes.
-4. Commit your work with a clear message.
-5. Push the branch and open a pull request.
+3. Install dependencies and make your changes.
+4. Run the relevant lint and build commands.
+5. Commit and push your branch.
+6. Open a pull request with a clear description of the change.
 
 ## License
 
